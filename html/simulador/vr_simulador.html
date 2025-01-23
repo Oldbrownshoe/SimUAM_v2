@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SimUAM: Simulador de Sismos para la Prevención de Accidentes</title>
+  <link rel="shortcut icon" href="./../../images/ico/logo_azul.ico" type="image/x-icon">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    #simulador {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1;
+    }
+
+    .caja-texto {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+
+    #encabezado {
+      background: rgba(70, 130, 180, 0.8);
+      /* Color azul */
+      color: white;
+    }
+
+    #mensaje {
+      background: rgba(220, 20, 60, 0.8);
+      /* Color rojo */
+      color: white;
+      position: absolute;
+      top: 60px;
+      right: 10px;
+    }
+
+    #cronometro {
+      background: rgba(34, 139, 34, 0.8);
+      /* Color verde */
+      color: white;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border-radius: 20px;
+      border: none;
+      z-index: 2;
+    }
+
+    #botonIniciar {
+      background: rgba(30, 144, 255, 0.8);
+      /* Color azul claro */
+      color: white;
+    }
+
+    #botonDetener {
+      background: rgba(255, 69, 0, 0.8);
+      /* Color naranja */
+      color: white;
+    }
+
+    #intensidad {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 215, 0, 0.8);
+      /* Color amarillo */
+      color: black;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #mercalli {
+      position: absolute;
+      top: 70px;
+      left: 10px;
+      background: rgba(138, 43, 226, 0.8);
+      /* Color púrpura */
+      color: white;
+      font-size: 16px;
+    }
+
+    #controles {
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      position: absolute;
+      bottom: 10px;
+    }
+
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <video id="video" autoplay></video>
+  <div id="simulador">
+    <h2 id="encabezado" class="caja-texto">Simulador de Sismos</h2>
+    <div id="mensaje" class="caja-texto"></div>
+    <div id="cronometro" class="caja-texto">Tiempo: 0.000 segundos</div>
+    <div id="controles">
+      <button id="botonIniciar" onclick="iniciarSimulacion()">Iniciar Simulación</button>
+      <button id="botonDetener" onclick="finalizarEvacuacion()">Finalizar Evacuación</button>
+    </div>
+  </div>
+
+  <button id="intensidad" onclick="ajustarIntensidad()">Intensidad: 0.0</button>
+  <button id="mercalli" onclick="siguienteMercalli()">Intensidad: I (escala de Mercalli)</button>
+
+  <audio id="sonidoSismo" loop>
+    <source src="./../../sound/bgm_sismo.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    let horaInicio;
+    let intervaloCronometro;
+    let intervaloSacudida;
+    let intensidad = 0.0;
+
+    const nivelesMercalli = [
+      { richterMin: 0.0, richterMax: 4.0, etiqueta: 'I - Imperceptible' },
+      { richterMin: 4.1, richterMax: 5.0, etiqueta: 'IV - Moderado' },
+      { richterMin: 5.1, richterMax: 6.0, etiqueta: 'V - Poco Fuerte' },
+      { richterMin: 6.1, richterMax: 7.0, etiqueta: 'VI - Fuerte' },
+      { richterMin: 7.1, richterMax: 8.0, etiqueta: 'VII - Muy Fuerte' },
+      { richterMin: 8.1, richterMax: 9.0, etiqueta: 'VIII - Destructivo' },
+      { richterMin: 9.1, richterMax: 9.9, etiqueta: 'IX - Muy Desastroso' },
+    ];
+
+    let indiceMercalliActual = 0;
+
+    const escalaMercalli = (richter) => {
+      for (let i = 0; i < nivelesMercalli.length; i++) {
+        if (richter >= nivelesMercalli[i].richterMin && richter <= nivelesMercalli[i].richterMax) {
+          return nivelesMercalli[i].etiqueta;
+        }
+      }
+      return 'X - Desastroso';
+    };
+
+    function iniciarSimulacion() {
+      document.getElementById('mensaje').textContent = '¡Simulación en progreso! Evacúa ahora.';
+      alert('¡Simulación en progreso! Evacúa ahora.');
+      horaInicio = new Date().getTime();
+      document.getElementById('sonidoSismo').play();
+      intervaloCronometro = setInterval(actualizarCronometro, 10);
+      iniciarSacudida();
+    }
+
+    function finalizarEvacuacion() {
+      const horaFin = new Date().getTime();
+      const tiempoReaccion = (horaFin - horaInicio) / 1000;
+      const mensaje = '¡Sismo terminado! Tu tiempo de reacción fue de ' + tiempoReaccion.toFixed(3) + ' segundos.';
+      document.getElementById('mensaje').textContent = mensaje;
+      alert(mensaje);
+      document.getElementById('sonidoSismo').pause();
+      document.getElementById('sonidoSismo').currentTime = 0;
+      clearInterval(intervaloCronometro);
+      clearInterval(intervaloSacudida);
+      if (tiempoReaccion <= 60) {
+        document.getElementById('cronometro').style.color = 'green';
+      } else {
+        document.getElementById('cronometro').style.color = 'red';
+      }
+    }
+
+    function actualizarCronometro() {
+      const tiempoActual = new Date().getTime();
+      const tiempoTranscurrido = (tiempoActual - horaInicio) / 1000;
+      document.getElementById('cronometro').textContent = 'Tiempo: ' + tiempoTranscurrido.toFixed(3) + ' segundos';
+    }
+
+    function ajustarIntensidad() {
+      intensidad = (Math.round((intensidad + 0.1) * 10) / 10) % 10;
+      document.getElementById('intensidad').textContent = 'Intensidad: ' + intensidad.toFixed(1);
+      document.getElementById('mercalli').textContent = 'Intensidad: ' + escalaMercalli(intensidad) + ' (escala de Mercalli)';
+    }
+
+    function siguienteMercalli() {
+      indiceMercalliActual = (indiceMercalliActual + 1) % nivelesMercalli.length;
+      const nuevoNivel = nivelesMercalli[indiceMercalliActual];
+      intensidad = nuevoNivel.richterMin;
+      document.getElementById('intensidad').textContent = 'Intensidad: ' + intensidad.toFixed(1);
+      document.getElementById('mercalli').textContent = 'Intensidad: ' + nuevoNivel.etiqueta + ' (escala de Mercalli)';
+    }
+
+    function iniciarSacudida() {
+      intervaloSacudida = setInterval(() => {
+        const nivelIntensidad = intensidad * 10; // Ajusta la magnitud del sacudido según la intensidad decimal
+        const x = Math.random() * nivelIntensidad - nivelIntensidad / 2;
+        const y = Math.random() * nivelIntensidad - nivelIntensidad / 2;
+        document.getElementById('video').style.transform = `translate(${x}px, ${y}px)`;
+      }, 50);
+    }
+
+    const video = document.getElementById('video');
+
+    navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'environment' } // Solicitar la cámara trasera
+    })
+      .then(stream => {
+        video.srcObject = stream;
+
+        // Detectar y ajustar la rotación según la orientación del dispositivo
+        window.addEventListener("orientationchange", function () {
+          switch (window.orientation) {
+            case 0:
+              video.style.transform = "rotate(0deg)";
+              break;
+            case 90:
+              video.style.transform = "rotate(90deg)";
+              break;
+            case -90:
+              video.style.transform = "rotate(-90deg)";
+              break;
+            case 180:
+              video.style.transform = "rotate(180deg)";
+              break;
+          }
+        });
+      })
+      .catch(error => {
+        console.error('Error al acceder a la cámara:', error);
+        document.getElementById('mensaje').textContent = 'Error al acceder a la cámara. Por favor, verifica los permisos.';
+      });
+
+  </script>
+
+</body>
+
+</html>

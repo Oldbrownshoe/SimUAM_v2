@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>SimUAM: Simulador</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./../../images/ico/logo_azul.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="./../../css/estilo_simulador.css">
+  <style>
+    body {
+      margin: 0;
+      background-position: center, center;
+      background-size: cover, cover;
+      background-repeat: no-repeat, no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>&nbsp;</p> <!-- Etiqueta de espaciado invisible-->
+  <p>&nbsp;</p>
+  <div class="container-clock">
+    <h2>Bienvenid@ a SimUAM:</h2>
+    <h3>Simulador</h3>
+    <p>&nbsp;</p>
+    <h4 class="container-clock" align="center">Elige una opción:</h4>
+  </div>
+
+  <div class="content">
+
+    <div class="card-container">
+      <div class="card">
+        <div class="face front">
+          <img src="./../../images/simulacro/simulacro_1.png" alt="">
+          <h3 align="center">Entrenamiento</h3>
+        </div>
+
+        <div class="face back">
+          <h6>¡Prepara tus goggles de VR!</h6>
+          <h3>Entrenamiento</h3>
+          <p>&nbsp;</p>
+          <p><strong>Descripción:</strong></p>
+          <p>Explora cómo se siente un sismo y aprende a estar preparado para prevenir accidentes. El simulador te
+            guiará paso a paso y luego podrás compartir tu experiencia para ayudarnos a mejorar. </p><p>¡Adelante!</p>
+          <p>&nbsp;</p>
+
+          <div class="link">
+            <a href="./../../html/simulador/vr_entrenamiento.html">Ir al Simulador</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="face front">
+          <img src="./../../images/simulacro/simulacro_2.png" alt="">
+          <h3 align="center">Simulador de Sismos</h3>
+        </div>
+
+        <div class="face back">
+          <h6>¡Prepara tus goggles de VR!</h6>
+          <h3>Simulador de Sismos</h3>
+          <p>&nbsp;</p>
+          <p><strong>Descripción:</strong></p>
+          <p>Explora cómo se siente un sismo y aprende a estar preparado para prevenir accidentes. Además, comparte tu
+            experiencia para ayudarnos a mejorar. </p><p>¡Adelante!</p>
+          <p>&nbsp;</p>
+
+          <div class="link">
+            <a href="./../../html/simulador/vr_simulador.html">Ir al Simulador</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="face front">
+          <img src="./../../images/soporte/soporte_azul.png" alt="">
+          <h3 align="center">Contacto</h3>
+        </div>
+
+        <div class="face back">
+          <h3>Contacto</h3>
+          <p>&nbsp;</p>
+          <p><strong>Contacto:</strong></p>
+          <p>Jorge Eduardo Arteaga Sánchez</p>
+          <p>&nbsp;</p>
+          <p><strong>Correo:</strong></p>
+          <p>jorge.arteaga@cua.uam.mx</p>
+          <p>&nbsp;</p>
+          <p><strong>Teléfono:</strong></p>
+          <p>55 1234 5678</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+
+      <script>
+        const imagenes = [
+          './../../../images/bg/bg_1.png',
+          './../../../images/bg/bg_2.png',
+          './../../../images/bg/bg_3.png',
+          './../../../images/bg/bg_4.png',
+          './../../../images/bg/bg_5.png',
+          './../../../images/bg/bg_6.png',
+          './../../../images/bg/bg_7.png',
+          './../../../images/bg/bg_8.png',
+          './../../../images/bg/bg_9.png',
+          './../../../images/bg/bg_10.png',
+          './../../../images/bg/bg_11.png',
+          './../../../images/bg/bg_12.png',
+          './../../../images/bg/bg_13.png',
+          './../../../images/bg/bg_14.png',
+          './../../../images/bg/bg_15.png',
+          './../../../images/bg/bg_16.png',
+          './../../../images/bg/bg_17.png',
+          './../../../images/bg/bg_19.png',
+          './../../../images/bg/bg_20.png',
+          './../../../images/bg/bg_21.png',
+          './../../../images/bg/bg_22.png',
+          './../../../images/bg/bg_23.png',
+          './../../../images/bg/bg_24.png',
+          './../../../images/bg/bg_25.png'
+        ];
+
+        const imagenRandom = imagenes[Math.floor(Math.random() * imagenes.length)];
+
+        document.body.style.backgroundImage = `url('./../../images/bg/difuminados/azul.png'), url(${imagenRandom})`;
+      </script>
+
+</body>
+
+</html>

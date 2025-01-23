@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SimUAM: Acerca de</title>
+  <link rel="icon" href="./../../images/ico/logo_mix.ico" type="image/x-icon">
+  <style>
+    @font-face {
+      font-family: 'Aptos';
+      src: local('Aptos'),
+        url('./../../font/Aptos.ttf') format('truetype');
+    }
+
+    body {
+      font-family: 'Aptos', sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    .creditos {
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+      background-color: #000;
+      color: #ffffff;
+    }
+
+    .creditos-content {
+      position: absolute;
+      bottom: -100%;
+      animation: scroll-up 20s linear infinite;
+      width: 100%;
+      text-align: center;
+    }
+
+    .references {
+      margin-top: 20px;
+      text-align: left;
+      padding: 0 20px;
+    }
+
+    .reference-line {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: px;
+    }
+
+    .reference-left {
+      width: 50%;
+      text-align: left;
+    }
+
+    .reference-right {
+      width: 50%;
+      text-align: right;
+    }
+
+    @keyframes scroll-up {
+      0% {
+        bottom: -100%;
+      }
+
+      100% {
+        bottom: 100%;
+      }
+    }
+
+    .static-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: #af4c4c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      z-index: 10;
+    }
+
+    .static-button:hover {
+      background-color: #a04545;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="./../inicio.html"><button class="static-button">Volver al Inicio</button></a>
+  <main class="creditos">
+    <div class="creditos-content">
+      <img src="./../../images/360_logo_bw.png" alt="" width="150px">
+      <h2>SimUAM: Simulador de Sismos para la Prevención de Accidentes</h2>
+      <h6>
+        _________________________________________________________________________________________________________________________
+      </h6>
+      <strong>
+        <p>Elaborado por:</p>
+      </strong>
+      <p>Jorge Eduardo Arteaga Sánchez</p>
+      <strong>
+        <p>Asesores:</p>
+      </strong>
+      <p>Dr. Wulfrano Arturo Luna Ramírez</p>
+      <p>Mtra. Lucila Mercado Colín</p>
+      <p>Dra. Karina Gutiérrez Fragoso</p>
+
+      <h6>
+        _________________________________________________________________________________________________________________________
+      </h6>
+
+      <p>SimUAM fue desarrollada integrando diversas tecnologías para ofrecer una experiencia innovadora y funcional. </p>
+        La lógica principal de la aplicación fue implementada en Kotlin, asegurando un alto rendimiento y compatibilidad en
+        dispositivos Android. </p>
+        Por otro lado, la interfaz y las características interactivas fueron diseñadas utilizando HTML, JavaScript y CSS, lo que permitió crear un entorno visualmente atractivo y dinámico. </p>
+        Esta combinación tecnológica garantiza que SimUAM sea una herramienta eficiente y versátil, diseñada para satisfacer las necesidades de sus usuarios.</p>
+
+    </div>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SimUAM: Formulario de Condiciones Emocionales</title>
+  <link rel="stylesheet" href="estilo_emocional.css">
+  <link rel="icon" href="./../../images/ico/logo_morado.ico" type="image/x-icon">
+</head>
+<body>
+  <h2>Formulario de Condiciones Emocionales</h2>
+  <form id="formularioCondiciones">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+
+    <label for="edad">Edad:</label>
+    <input type="number" id="edad" name="edad" required><br><br>
+
+    <label for="genero">Género:</label>
+    <select id="genero" name="genero" required>
+      <option value="">Seleccione...</option>
+      <option value="masculino">Masculino</option>
+      <option value="femenino">Femenino</option>
+      <option value="otro">Otro</option>
+      <option value="prefiere_no_decir">Prefiere no decir</option>
+    </select><br><br>
+
+    <h3>Preguntas sobre Condiciones Emocionales</h3>
+
+    <label for="calma">¿Mantiene la calma durante un sismo?</label>
+    <select id="calma" name="calma" required>
+      <option value="">Seleccione...</option>
+      <option value="siempre">Siempre</option>
+      <option value="a_veces">A veces</option>
+      <option value="nunca">Nunca</option>
+    </select><br><br>
+
+    <label for="lider">¿Suele liderar a otras personas en situaciones de emergencia?</label>
+    <select id="lider" name="lider" required>
+      <option value="">Seleccione...</option>
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select><br><br>
+
+    <label for="sigue">¿Prefiere seguir indicaciones en vez de liderar?</label>
+    <select id="sigue" name="sigue" required>
+      <option value="">Seleccione...</option>
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select><br><br>
+
+    <label for="estres">¿Se estresa fácilmente en situaciones de crisis?</label>
+    <select id="estres" name="estres" required>
+      <option value="">Seleccione...</option>
+      <option value="siempre">Siempre</option>
+      <option value="a_veces">A veces</option>
+      <option value="nunca">Nunca</option>
+    </select><br><br>
+
+    <label for="decisiones">¿Puede tomar decisiones rápidas bajo presión?</label>
+    <select id="decisiones" name="decisiones" required>
+      <option value="">Seleccione...</option>
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select><br><br>
+
+    <input type="submit" value="Enviar">
+  </form>
+
+  <h2>Resultados y Recomendaciones</h2>
+  <div id="resultados"></div>
+
+  <script src="script_emocional.js"></script>
+
+  <div style="text-align:center; margin-top: 20px;">
+    <a href="./../inicio.html"><button class="redirect-button">Regresar</button></a>
+  </div>
+</body>
+</html>

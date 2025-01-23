@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>SimUAM: Inicio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./../../images/ico/logo_naranja.ico" type="image/x-icon">
+  <link rel="stylesheet" type="text/css" href="./../../css/estilo_index.css">
+  <style>
+    body {
+      margin: 0;
+      background-position: center, center;
+      background-size: cover, cover;
+      background-repeat: no-repeat, no-repeat;
+    }
+  </style>
+</head>
+
+<body>
+
+  <p>&nbsp;</p> <!-- Etiqueta de espaciado invisible -->
+  <p>&nbsp;</p>
+
+  <div class="container-clock">
+    <h2>Bienvenid@ a SimUAM:</h2>
+    <h3>Inicio</h3>
+    <p>&nbsp;</p>
+    <h4 class="container-clock" align="center">Elige una opción:</h4>
+  </div>
+
+  <div class="content">
+
+    <div class="card-container">
+      <div class="card">
+        <div class="face front">
+          <img src="./../../images/index/index_6.jpg" alt="">
+          <h3 align="center">Introducción</h3>
+        </div>
+
+        <div class="face back">
+          <h3>Introducción</h3>
+          <p>&nbsp;</p>
+          <p><strong>Descripción:</strong></p>
+          <p>Un vistazo al proyecto y cómo fue que se dio.</p>
+          <p>&nbsp;</p>
+
+          <div class="link">
+            <a href="./../../html/inicio/introduccion.html">Ver presentación</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fin de tarjeta -->
+
+      <div class="card">
+        <div class="face front">
+          <img src="./../../images/index/index_5.jpg" alt="">
+          <h3 align="center">Evaluación</h3>
+        </div>
+
+        <div class="face back">
+          <h3>Evaluación</h3>
+          <p>&nbsp;</p>
+          <p><strong>Descripción:</strong></p>
+          <p>Completa los siguientes formularios para evaluar tus condiciones físicas y emocionales. </p>
+          <p>Tu información será confidencial y utilizada para ofrecerte recomendaciones personalizadas durante el simulador.</p>
+          <p>&nbsp;</p>
+
+          <div class="link">
+            <a href="./../../html/inicio/formulario.html">Ver formularios </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fin de tarjeta -->
+
+      <div class="card">
+        <div class="face front">
+          <img src="../../images/index/index_10.png" alt="">
+          <h3 align="center">Simulador de Sismos</h3>
+        </div>
+
+        <div class="face back">
+          <h3>Simulador de Sismos</h3>
+          <p>&nbsp;</p>
+          <p><strong>Descripción:</strong></p>
+          <p>Conoce la sensación de un sismo y cómo estar preparado para prevenir accidentes con SimUAM. </p>
+          <p>¡Infórmate y prepárate!</p>
+          <p>&nbsp;</p>
+
+          <div class="link">
+            <a href="./../inicio/simulador.html">Ir al Simulador</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fin de tarjeta -->
+
+      <div class="card">
+        <div class="face front">
+          <img src="./../../images/index/index_9.jpg" alt="">
+          <h3 align="center">Acerca de</h3>
+        </div>
+
+        <div class="face back">
+          <h3>Acerca de</h3>
+          <p>&nbsp;</p>
+          <p><strong>Descripción:</strong></p>
+          <p>Aquí podrás ver las personas involucradas en la realización del proyecto.</p>
+          <p>&nbsp;</p>
+
+          <div class="link">
+            <a href="./acerca_de.html"> Ver más</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="face front">
+          <img src="../../images/soporte/soporte_naranja.png" alt="">
+          <h3 align="center">Contacto</h3>
+        </div>
+
+        <div class="face back">
+          <h3>Contacto</h3>
+          <p>&nbsp;</p>
+          <p><strong>Contacto:</strong></p>
+          <p>Jorge Eduardo Arteaga Sánchez</p>
+          <p>&nbsp;</p>
+          <p><strong>Correo:</strong></p>
+          <p>jorge.arteaga@cua.uam.mx</p>
+          <p>&nbsp;</p>
+          <p><strong>Teléfono:</strong></p>
+          <p>55 1234 5678</p>
+          <p>&nbsp;</p>
+        </div>
+      </div>
+
+    </div>
+
+    <script>
+      const imagenes = [
+        './../../../images/bg/bg_1.png',
+        './../../../images/bg/bg_2.png',
+        './../../../images/bg/bg_3.png',
+        './../../../images/bg/bg_4.png',
+        './../../../images/bg/bg_5.png',
+        './../../../images/bg/bg_6.png',
+        './../../../images/bg/bg_7.png',
+        './../../../images/bg/bg_8.png',
+        './../../../images/bg/bg_9.png',
+        './../../../images/bg/bg_10.png',
+        './../../../images/bg/bg_11.png',
+        './../../../images/bg/bg_12.png',
+        './../../../images/bg/bg_13.png',
+        './../../../images/bg/bg_14.png',
+        './../../../images/bg/bg_15.png',
+        './../../../images/bg/bg_16.png',
+        './../../../images/bg/bg_17.png',
+        './../../../images/bg/bg_19.png',
+        './../../../images/bg/bg_20.png',
+        './../../../images/bg/bg_21.png',
+        './../../../images/bg/bg_22.png',
+        './../../../images/bg/bg_23.png',
+        './../../../images/bg/bg_24.png',
+        './../../../images/bg/bg_25.png'
+      ];
+
+      const imagenRandom = imagenes[Math.floor(Math.random() * imagenes.length)];
+
+      document.body.style.backgroundImage = `url('./../../images/bg/difuminados/naranja.png'), url(${imagenRandom})`;
+    </script>
+
+</body>
+
+</html>
